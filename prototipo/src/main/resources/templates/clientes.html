@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Clientes</title>
+    <style>
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin: 20px auto;
+            font-family: Arial, sans-serif;
+        }
+        th, td {
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        tr:nth-child(even) {
+            background-color: #fafafa;
+        }
+    </style>
+</head>
+<body>
+
+<h2 style="text-align:center;">Clientes</h2>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Dirección</th>
+        <th>Email</th>
+        <th>Teléfono</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Recorre la lista de clientes que envíes desde el controlador -->
+    <tr th:each="cliente : ${clientes}">
+        <td th:text="${cliente.id}"></td>
+        <td th:text="${cliente.nombre}"></td>
+        <td th:text="${cliente.direccion != null ? cliente.direccion : '—'}"></td>
+        <td th:text="${cliente.email}"></td>
+        <td th:text="${cliente.telefono}"></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
