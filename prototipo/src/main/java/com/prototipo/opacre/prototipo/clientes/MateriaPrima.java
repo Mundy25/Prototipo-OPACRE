@@ -61,3 +61,8 @@ public class MateriaPrima {
         this.valor = valor;
     }
 }
+
+
+ //incluir automatizaciones
+ //ventas por whatsapp
+ // enum de productos

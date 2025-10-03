@@ -6,31 +6,41 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+
 @Service
+public class OrdenServicioImp implements OrdenServicio {
 
-public class OrdenServicioImp  implements OrdenServicio{
-
-    //@Autowired
-    private final RepositorioOrden repoOrden;
-
-    public OrdenServicioImp(RepositorioOrden repoOrden) {
-        this.repoOrden = repoOrden;
-    }
-
-//    public Orden guardar(Orden orden){
-//        return repoOrden.save(orden);
-//    }
-//    public  List<Orden> findAll(){
-//        return repoOrden.findAll();
-//    }
-
-    @Override
-    public Orden guardar(Orden orden) {
-        return repoOrden.save(orden);
-    }
+    @Autowired
+    private RepositorioOrden ordenRepository;
 
     @Override
     public List<Orden> findAll() {
-        return repoOrden.findAll();
+        return ordenRepository.findAll();
+    }
+
+    @Override
+    public Optional<Orden> findById(String id) {
+        return ordenRepository.findById(id);
+    }
+
+    @Override
+    public List<Orden> findByClienteId(String clienteId) {
+        return ordenRepository.findByClienteId(clienteId);
+    }
+
+    @Override
+    public List<Orden> findByClienteUsername(String clienteUsername) {
+        return ordenRepository.findByClienteUsername(clienteUsername);
+    }
+
+    @Override
+    public Orden save(Orden orden) {
+        return ordenRepository.save(orden);
+    }
+
+    @Override
+    public void delete(String id) {
+        ordenRepository.deleteById(id);
     }
 }
